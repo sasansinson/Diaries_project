@@ -3,23 +3,23 @@ import * as api from '../api/index.js';
 
 export const signin = (form, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.signIn(formData);
+    const { data } = await api.signIn(form);
 
     dispatch({ type: AUTH, data });
 
-    router.push('/');
+    navigate.push('/');
   } catch (error) {
     console.log(error);
   }
 };
 
-export const signup = (formData, router) => async (dispatch) => {
+export const signup = (form, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.signUp(formData);
+    const { data } = await api.signUp(form);
 
     dispatch({ type: AUTH, data });
 
-    router.push('/');
+    navigate.push('/');
   } catch (error) {
     console.log(error);
   }
