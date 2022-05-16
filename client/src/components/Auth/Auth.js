@@ -10,8 +10,8 @@ import Input from './Input';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
-const SignUp = () => {
-  const [FormData, setForm] = useState(initialState);
+const Auth = () => {
+  const [formData, setFormData] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,10 +20,10 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleChange = (e) => setForm({ ...FormData, [e.target.name]: e.target.value });
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const switchMode = () => {
-    setForm(initialState);
+    setFormData(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
@@ -32,10 +32,13 @@ const SignUp = () => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signup(FormData, navigate));
+      dispatch(signup(formData, navigate));
+     
     } else {
-      dispatch(signin(FormData, navigate));
+      dispatch(signin(formData, navigate));
+      
     }
+   
   };
 
  
@@ -75,4 +78,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Auth;
