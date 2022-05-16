@@ -17,9 +17,9 @@ export const createPost = async (req, res) => {
     const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString()});
 
     try {
-        await newPost.save();
+        await newPostMessage.save();
 
-        res.status(201).jason(newPost);
+        res.status(201).jason(newPostMessage);
         
     } catch (error) {
         res.status(409).json({message: error.message}); 
